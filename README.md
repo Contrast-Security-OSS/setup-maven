@@ -1,16 +1,29 @@
-### About This Project
+# Setup Maven GitHub Action
 
-Complete environment configuration for Maven builds in Github workflows. Default maven version is 3.9.9 (Java 8).
+This GitHub Action simplifies the setup of Apache Maven within your workflows. It downloads and installs the specified Maven version and adds it to the `PATH` environment variable, making `mvn` commands readily available.
 
-### How To Use
+## Usage
 
-Copy to your Github workflow .yml file
+```yaml
+name: Maven Build
 
-Maven Release History: https://maven.apache.org/docs/history.html
+on:
+  push:
+    branches:
+      - main
 
-```
-    - name: Set up Maven
-      uses: Contrast-Security-OSS/setup-maven
-      with:
-        maven-version: {desired.maven.version}
-```
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Maven
+        uses: Contrast-Security-OSS/setup-maven@v1.0.0 
+        with:
+          maven-version: '3.8.6' # Specify the desired Maven version
+
+      - name: Build with Maven
+        run: mvn clean install
