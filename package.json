@@ -5,7 +5,7 @@
   "description": "setup maven action",
   "main": "lib/setup-maven.js",
   "scripts": {
-    "build": "tsc",
+    "build": "ncc build src/setup-maven.ts -o lib",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts"
   },
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/node": "^20.11.6",
     "@types/semver": "^6.0.0",
+    "@vercel/ncc": "^0.38.3",
     "husky": "^2.3.0",
     "prettier": "^1.17.1",
     "typescript": "^5.8.2"
