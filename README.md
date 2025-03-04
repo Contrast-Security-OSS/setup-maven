@@ -1,6 +1,10 @@
+### About This Project
+
+Complete environment configuration for Maven builds in Github workflows. Default maven version is 3.9.9 (Java 8).
+
 ### How To Use
 
-Add this step into workflow. Default maven version is 3.9.9 (Java 8).
+Copy to your Github workflow .yml file
 
 Maven Release History: https://maven.apache.org/docs/history.html
 
