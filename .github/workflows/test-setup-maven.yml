@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Setup Maven (Default)
-        uses: Contrast-Security-OSS/setup-maven@v1366907c5493eaf4ec803a508f9a32b6fd01e0a6
+        uses: Contrast-Security-OSS/setup-maven@1366907c5493eaf4ec803a508f9a32b6fd01e0a6
         
       - name: Verify Maven Version
         run: mvn --version
@@ -45,7 +45,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Maven (Specific Version)
-        uses: Contrast-Security-OSS/setup-maven@v1366907c5493eaf4ec803a508f9a32b6fd01e0a6
+        uses: Contrast-Security-OSS/setup-maven@1366907c5493eaf4ec803a508f9a32b6fd01e0a6
         with:
           maven-version: ${{ matrix.maven_version }}
 
@@ -59,7 +59,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Maven (Invalid Version)
-        uses: Contrast-Security-OSS/setup-maven@v1366907c5493eaf4ec803a508f9a32b6fd01e0a6
+        uses: Contrast-Security-OSS/setup-maven@1366907c5493eaf4ec803a508f9a32b6fd01e0a6
         with:
             maven-version: '4.0.0-foo'
       - name: Attempt to run mvn, This should fail. 
