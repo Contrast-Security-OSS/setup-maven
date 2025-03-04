@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Maven
-        uses: Contrast-Security-OSS/setup-maven@v1.0.1 
+        uses: Contrast-Security-OSS/setup-maven@v1.0.2
         with:
           maven-version: '3.8.6' # Specify the desired Maven version
 
