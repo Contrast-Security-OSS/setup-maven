@@ -7,4 +7,4 @@ inputs:
     default: '3.9.9'
 runs:
   using: 'node20'
-  main: 'lib/setup-maven.js'
+  main: 'lib/index.js'
