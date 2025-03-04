@@ -1,0 +1,10 @@
+name: 'Setup Maven'
+description: 'Install a specific version of Apache Maven and add it to the PATH'
+author: 'Contrast Security Inc'
+inputs:
+  maven-version:
+    description: 'Version Spec of the version to use.  Examples: 10.x, 10.15.1, >=10.15.0'
+    default: '3.9.9'
+runs:
+  using: 'node20'
+  main: 'lib/setup-maven.js'
