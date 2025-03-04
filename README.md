@@ -1,6 +1,8 @@
 ### How To Use
 
-Add this step into workflow
+Add this step into workflow. Default maven version is 3.9.9 (Java 8).
+
+Maven Release History: https://maven.apache.org/docs/history.html
 
 ```
     - name: Set up Maven
