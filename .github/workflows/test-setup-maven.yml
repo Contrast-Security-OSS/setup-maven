@@ -1,4 +1,4 @@
-name: Test Setup Maven
+name: Build and Test Setup Maven
 
 on:
   push:
@@ -6,22 +6,28 @@ on:
       - main
 
 jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Match the Node.js version in your action.yml
+
+      - name: Install dependencies
+        run: npm install  # Add this step to install dependencies
+
+      - name: Build
+        run: npm run build
+        
   test_default_version:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20' 
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Build
-        run: npm run build 
         
       - name: Setup Maven (Default)
         uses: Contrast-Security-OSS/setup-maven@v1.0.0
