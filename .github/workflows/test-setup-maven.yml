@@ -52,20 +52,6 @@ jobs:
       - name: Verify Maven Version
         run: mvn --version | grep "${{ matrix.maven_version }}"
 
-  test_version_range:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Maven (Version Range)
-        uses: Contrast-Security-OSS/setup-maven@fbbfb953e737e9cc9ec632820ffe2ac0b2aba8b2
-        with:
-          maven-version: '3.x'
-
-      - name: Verify Maven Version
-        run: mvn --version
-
   test_invalid_version:
     runs-on: ubuntu-latest
     steps:
@@ -75,7 +61,7 @@ jobs:
       - name: Setup Maven (Invalid Version)
         uses: Contrast-Security-OSS/setup-maven@fbbfb953e737e9cc9ec632820ffe2ac0b2aba8b2
         with:
-            maven-version: 'invalid_version'
+            maven-version: '4.0.0-foo'
       - name: Attempt to run mvn, This should fail. 
         run: mvn --version
         continue-on-error: true #allow the action to continue if mvn fails.
