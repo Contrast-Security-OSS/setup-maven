@@ -58,7 +58,7 @@ jobs:
         uses: Contrast-Security-OSS/setup-maven@v1.0.0
         with:
             maven-version: 'invalid_version'
-      - name: Attempt to run mvn, This should fail.
+      - name: Attempt to run mvn, This should fail. 
         run: mvn --version
         continue-on-error: true #allow the action to continue if mvn fails.
       - name: Verify that the previous command failed.
