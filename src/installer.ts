@@ -42,6 +42,7 @@ async function downloadMaven(version: string): Promise<string> {
     let toolRoot = path.join(extractedPath, toolDirectoryName);
     return await tc.cacheDir(toolRoot, 'maven', version);
   } catch (err) {
-    throw err;
+      core.warning(`Failed to download Maven ${version}: ${err}`); // Log warning instead of throwing error
+      return ''; // Return an empty string to indicate failure
   }
 }
