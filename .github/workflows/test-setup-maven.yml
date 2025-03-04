@@ -1,0 +1,65 @@
+name: Test Setup Maven
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_default_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Maven (Default)
+        uses: Contrast-Security-OSS/setup-maven@v1.0.0
+      - name: Verify Maven Version
+        run: mvn --version
+
+  test_specific_version:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        maven_version: ['3.8.6', '3.9.0', '4.0.0-alpha-1', '3.1.1']
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Maven (Specific Version)
+        uses: Contrast-Security-OSS/setup-maven@v1.0.0
+        with:
+          maven-version: ${{ matrix.maven_version }}
+
+      - name: Verify Maven Version
+        run: mvn --version | grep "${{ matrix.maven_version }}"
+
+  test_version_range:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Maven (Version Range)
+        uses: Contrast-Security-OSS/setup-maven@v1.0.0
+        with:
+          maven-version: '3.x'
+
+      - name: Verify Maven Version
+        run: mvn --version
+
+  test_invalid_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Maven (Invalid Version)
+        uses: Contrast-Security-OSS/setup-maven@v1.0.0
+        with:
+            maven-version: 'invalid_version'
+      - name: Attempt to run mvn, This should fail.
+        run: mvn --version
+        continue-on-error: true #allow the action to continue if mvn fails.
+      - name: Verify that the previous command failed.
+        run: test $? -ne 0
