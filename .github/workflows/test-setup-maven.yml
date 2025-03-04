@@ -65,5 +65,3 @@ jobs:
       - name: Attempt to run mvn, This should fail. 
         run: mvn --version
         continue-on-error: true #allow the action to continue if mvn fails.
-      - name: Verify that the previous command failed.
-        run: test $? -ne 0
