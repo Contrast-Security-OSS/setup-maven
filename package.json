@@ -17,10 +17,10 @@
   "author": "Contrast Security Inc",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.10.0",
+    "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
     "@actions/io": "^1.0.0",
-    "@actions/tool-cache": "2.0.0",
+    "@actions/tool-cache": "2.0.2",
     "semver": "^7.0.0",
     "typed-rest-client": "^1.5.0"
   },
